@@ -26,7 +26,7 @@ TestWebber
 A quick and simple web server for testing and development use.
 Copyright (c) 2017 Macks L. All rights reserved.
 
-testwebber [-d path] [-h hostname] [-!ss | -s server] [-t] [-k] [-a asset] [-m extension:mimetype] [-v]
+testwebber [-d path] [-i hostname] [-!ss | -s server] [-t] [-k] [-a asset] [-m extension:mimetype] [-v]
 testwebber --show-mimetypes
 testwebber -ver
 testwebber -h
@@ -79,11 +79,20 @@ testwebber -m -.tiff -m .foo:text/csv
 ```
 
 
+Serving Remote Clients
+----------------------
+ProtoWebber is primarily designed to run locally, meaning you can only access the webserver that ProtoWebber is running on. To make your computer into a real webserver others can access, there are a couple of things to do:
+- Run `testwebber` with administrative privileges
+- Run with argument `-i http://*:8080/`
+- Configure Windows firewall to allow inbound connection to port `8080`.
+- Make sure your LAN router firewall is not configured to block inter-client TCP connections
+
+
 Building
 --------
 **Important!** You probably want to change the location where packages will be stored.
 
-Open up `(repoDir)/src/globa.bsd` with your favorite editor, and look for these lines:
+Open up `(repoDir)/src/global.bsd` with your favorite editor, and look for these lines:
 ```bash
 pkgDir = ${rootDir}'packages/oneget'
 dotnetSdkDir = ${rootDir}'packages/dotnetsdk'
